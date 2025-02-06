@@ -11,6 +11,6 @@ if (!mongoUri) {
 
 const client = new MongoClient(mongoUri);
 
-const clientPromise: Promise<MongoClient> = client.connect(); // Use 'const' instead of 'let'
+const clientPromise = client.connect(); // Use 'const' instead of 'let'
 
 export default clientPromise;
