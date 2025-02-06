@@ -1,5 +1,5 @@
-// src/app/api/registration/verify/route.ts
-import { NextRequest, NextResponse } from "next/server";
+// src/app/api/registration/verify/route.js
+import { NextResponse } from "next/server";
 import { MongoClient, ObjectId } from "mongodb";
 import dotenv from "dotenv";
 
@@ -23,7 +23,7 @@ async function connectToDatabase() {
   return client.db(dbName);
 }
 
-export async function POST(req: NextRequest) {
+export async function POST(req) {
   try {
     const { _id } = await req.json();
 
@@ -105,7 +105,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         message: "Internal server error",
-        error: (error as Error).message,
+        error: error.message,
       },
       { status: 500 }
     );
